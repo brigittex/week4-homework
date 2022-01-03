@@ -15,7 +15,6 @@ export default function Weather() {
   let [weather, setWeather] = useState({});
 
   function displayWeather(response) {
-    console.log(response);
     setWeather({
       location: response.data.name,
       temperature: Math.round(response.data.main.temp),
@@ -25,6 +24,7 @@ export default function Weather() {
       iconURL: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       icon: response.data.weather[0].icon,
       feels_like: Math.round(response.data.main.feels_like),
+      dt: response.data.dt * 1000,
     });
   }
 
