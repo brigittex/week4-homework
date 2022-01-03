@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Footer from "./Footer.js";
 import CurrentWeather from "./CurrentWeather.js";
+import CurrentIcon from "./CurrentIcon.js";
 import City from "./City.js";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
@@ -19,7 +20,8 @@ export default function Weather() {
       description: response.data.weather[0].main,
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed * 3.6), //converting from m/s to km/h
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      iconURL: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       feels_like: Math.round(response.data.main.feels_like),
     });
   }
@@ -63,7 +65,9 @@ export default function Weather() {
                   <div className="col-3">
                     <CurrentWeather weather={weather} />
                   </div>
-                  <div className="col-4">Current Icon</div>
+                  <div className="col-4">
+                    <CurrentIcon weather={weather} />
+                  </div>
                   <div className="col-3">Current temp</div>
                   <div className="col-2">Unit Conversion</div>
                 </div>
@@ -80,7 +84,7 @@ export default function Weather() {
           <li>Humidity: {weather.humidity} %</li>
           <li>Wind: {weather.wind} km/h</li>
           <li>
-            <img src={weather.icon} alt={weather.description} />
+            <img src={weather.iconURL} alt={weather.description} />
           </li>
         </ul>
       </div>
