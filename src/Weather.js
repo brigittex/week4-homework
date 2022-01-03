@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Footer from "./Footer.js";
+import CurrentWeather from "./CurrentWeather.js";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 import "./Weather.css";
 
 export default function Weather() {
@@ -70,7 +72,9 @@ export default function Weather() {
               {form}
               City
               <div className="row">
-                <div className="col-3">Current Weather</div>
+                <div className="col-3">
+                  <CurrentWeather />
+                </div>
                 <div className="col-4">Current Icon</div>
                 <div className="col-3">Current temp</div>
                 <div className="col-2">Unit Conversion</div>
