@@ -11,6 +11,7 @@ export default function Weather() {
   let [weather, setWeather] = useState({});
 
   function displayWeather(response) {
+    console.log(response);
     setWeather({
       location: response.data.name,
       temperature: Math.round(response.data.main.temp),
@@ -18,6 +19,7 @@ export default function Weather() {
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed * 3.6), //converting from m/s to km/h
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      feels_like: Math.round(response.data.main.feels_like),
     });
   }
 
@@ -49,7 +51,27 @@ export default function Weather() {
   if (loaded) {
     return (
       <div className="Weather">
-        {form}
+        <div className="Weather">
+          <div className="container">
+            <h1>⚛</h1>
+            <div className="weather-app-wrapper">
+              <div className="weather-app">
+                {form}
+                City
+                <div className="row">
+                  <div className="col-3">
+                    <CurrentWeather weather={weather} />
+                  </div>
+                  <div className="col-4">Current Icon</div>
+                  <div className="col-3">Current temp</div>
+                  <div className="col-2">Unit Conversion</div>
+                </div>
+              </div>
+            </div>
+            <Footer />
+          </div>
+        </div>
+        <hr />
         <ul>
           <li>Location: {weather.location}</li>
           <li>Temperature: {weather.temperature} °C</li>
@@ -68,18 +90,7 @@ export default function Weather() {
         <div className="container">
           <h1>⚛</h1>
           <div className="weather-app-wrapper">
-            <div className="weather-app">
-              {form}
-              City
-              <div className="row">
-                <div className="col-3">
-                  <CurrentWeather />
-                </div>
-                <div className="col-4">Current Icon</div>
-                <div className="col-3">Current temp</div>
-                <div className="col-2">Unit Conversion</div>
-              </div>
-            </div>
+            <div className="weather-app">{form}</div>
           </div>
           <Footer />
         </div>
