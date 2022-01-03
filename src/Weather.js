@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Footer from "./Footer.js";
 import CurrentWeather from "./CurrentWeather.js";
+import City from "./City.js";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Weather.css";
@@ -57,7 +58,7 @@ export default function Weather() {
             <div className="weather-app-wrapper">
               <div className="weather-app">
                 {form}
-                City
+                <City weather={weather} />
                 <div className="row">
                   <div className="col-3">
                     <CurrentWeather weather={weather} />
