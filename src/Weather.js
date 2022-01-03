@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Footer from "./Footer.js";
 import axios from "axios";
+import "./Weather.css";
 
 export default function Weather() {
   let [location, setLocation] = useState(null);
@@ -12,7 +14,7 @@ export default function Weather() {
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].main,
       humidity: response.data.main.humidity,
-      wind: Math.round(response.data.wind.speed * 3.6),
+      wind: Math.round(response.data.wind.speed * 3.6), //converting from m/s to km/h
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
@@ -59,6 +61,25 @@ export default function Weather() {
       </div>
     );
   } else {
-    return <div className="Weather">{form}</div>;
+    return (
+      <div className="Weather">
+        <div className="container">
+          <h1>⚛</h1>
+          <div className="weather-app-wrapper">
+            <div className="weather-app">
+              {form}
+              City
+              <div className="row">
+                <div className="col-3">Current Weather</div>
+                <div className="col-4">Current Icon</div>
+                <div className="col-3">Current temp</div>
+                <div className="col-2">Unit Conversion</div>
+              </div>
+            </div>
+          </div>
+          <Footer />
+        </div>
+      </div>
+    );
   }
 }
