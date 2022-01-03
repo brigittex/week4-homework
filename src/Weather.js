@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Footer from "./Footer.js";
 import CurrentWeather from "./CurrentWeather.js";
 import CurrentIcon from "./CurrentIcon.js";
+import CurrentTemp from "./CurrentTemp.js";
 import City from "./City.js";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
@@ -68,7 +69,9 @@ export default function Weather() {
                   <div className="col-4">
                     <CurrentIcon weather={weather} />
                   </div>
-                  <div className="col-3">Current temp</div>
+                  <div className="col-3">
+                    <CurrentTemp weather={weather} />
+                  </div>
                   <div className="col-2">Unit Conversion</div>
                 </div>
               </div>
