@@ -44,55 +44,55 @@ export default function Weather() {
 
   let form = (
     <form onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="Enter a location"
-        onChange={updateLocation}
-      />
-      <input type="submit" value="Search" />
+      <div className="row">
+        <div className="col-9">
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter location"
+              autoFocus
+              autoComplete="off"
+              onChange={updateLocation}
+            />
+          </div>
+        </div>
+
+        <div className="col-3">
+          <button type="submit" className="btn btn-primary w-100 float-end">
+            <i className="fas fa-search"></i> Search
+          </button>
+        </div>
+      </div>
     </form>
   );
-
   if (loaded) {
     return (
       <div className="Weather">
-        <div className="Weather">
-          <div className="container">
-            <h1>⚛</h1>
-            <div className="weather-app-wrapper">
-              <div className="weather-app">
-                {form}
-                <City weather={weather} />
-                <div className="row">
-                  <div className="col-3">
-                    <CurrentWeather weather={weather} />
-                  </div>
-                  <div className="col-4">
-                    <CurrentIcon weather={weather} />
-                  </div>
-                  <div className="col-3">
-                    <CurrentTemp weather={weather} />
-                  </div>
-                  <div className="col-2">
-                    <UnitConversion />
-                  </div>
+        <div className="container">
+          <h1>⚛</h1>
+          <div className="weather-app-wrapper">
+            <div className="weather-app">
+              {form}
+              <City weather={weather} />
+              <div className="row">
+                <div className="col-3">
+                  <CurrentWeather weather={weather} />
+                </div>
+                <div className="col-4">
+                  <CurrentIcon weather={weather} />
+                </div>
+                <div className="col-3">
+                  <CurrentTemp weather={weather} />
+                </div>
+                <div className="col-2">
+                  <UnitConversion />
                 </div>
               </div>
             </div>
-            <Footer />
           </div>
+          <Footer />
         </div>
-        <hr />
-        <ul>
-          <li>Location: {weather.location}</li>
-          <li>Temperature: {weather.temperature} °C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity} %</li>
-          <li>Wind: {weather.wind} km/h</li>
-          <li>
-            <img src={weather.iconURL} alt={weather.description} />
-          </li>
-        </ul>
       </div>
     );
   } else {
