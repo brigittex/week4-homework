@@ -12,7 +12,7 @@ export default function Footer() {
         >
           Open-source code
         </a>{" "}
-        by Brigitte Giguère <i className="fab fa-canadian-maple-leaf"></i>
+        by Brigitte Giguère 🍁
       </footer>
     </div>
   );
